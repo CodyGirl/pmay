@@ -12,10 +12,12 @@ import { I18nService } from '../../i18n.service';
 export class HeaderComponent implements OnInit {
 
   menuHidden = true;
-
+  isLoggedIn = false;
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              private i18nService: I18nService) { }
+              private i18nService: I18nService) {
+    this.isLoggedIn = authenticationService.isAuthenticated();
+  }
 
   ngOnInit() { }
 
