@@ -1,18 +1,17 @@
+<ng-container *ngIf="images">
+<ngb-carousel >
+  <ng-template ngbSlide  *ngFor="let banner of banners">
+   <!-- <img [src]="images[0]" alt="Random first slide">-->
+    <div class="cover-image" [ngStyle]="{'background-image': getUrl(banner)}"></div>
+    <div class="carousel-caption">
+      <h3>{{banner.banner_header}}</h3>
+      <p>{{banner.banner_label}}</p>
+    </div>
+  </ng-template>
 
-<ngb-carousel *ngIf="images">
-  <ng-template ngbSlide>
-    <img [src]="images[0]" alt="Random first slide">
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[1]" alt="Random second slide">
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </ng-template>
- 
 </ngb-carousel>
+</ng-container>
+
+<app-topic></app-topic>
+
+

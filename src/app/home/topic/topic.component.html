@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-sm-6 col-md-4 mb-4" *ngFor="let topic of topics">
+      <div class="card" >
+        <img class="card-img-top" [src]="topic.image" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{topic.title}}</h5>
+          <p class="card-text">{{topic.content}}</p>
+          <a href="#" class="btn btn-primary">More..</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
