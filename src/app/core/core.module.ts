@@ -6,7 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ShellComponent } from './shell/shell.component';
+import { CitizenComponent } from './shell/citizen.component';
 import { HeaderComponent } from './shell/header/header.component';
+import { CitizenHeaderComponent } from './shell/citizen-header/citizen-header.component';
 import { RouteReusableStrategy } from './route-reusable-strategy';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationGuard } from './authentication/authentication.guard';
@@ -27,7 +29,9 @@ import { CacheInterceptor } from './http/cache.interceptor';
   ],
   declarations: [
     HeaderComponent,
-    ShellComponent
+    CitizenHeaderComponent,
+    ShellComponent,
+    CitizenComponent
   ],
   providers: [
     AuthenticationService,

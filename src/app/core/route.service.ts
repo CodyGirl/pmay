@@ -1,6 +1,7 @@
 import { Route as ngRoute, Routes } from '@angular/router';
 
 import { ShellComponent } from './shell/shell.component';
+import { CitizenComponent } from './shell/citizen.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 
 /**
@@ -18,7 +19,15 @@ export class Route {
       path: '',
       component: ShellComponent,
       children: routes,
-      canActivate: [AuthenticationGuard],
+      // Reuse ShellComponent instance when navigating between child views
+      data: { reuse: true }
+    };
+  }
+  static withOutShell(routes: Routes): ngRoute {
+    return {
+      path: '',
+      component: CitizenComponent,
+      children: routes,
       // Reuse ShellComponent instance when navigating between child views
       data: { reuse: true }
     };
