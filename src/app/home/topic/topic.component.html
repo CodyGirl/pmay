@@ -5,7 +5,8 @@
         <img class="card-img-top" [src]="topic.image" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{topic.title}}</h5>
-          <p class="card-text">{{topic.content}}</p>
+          <div class="card-text" [innerHTML]="topic.content"></div>
+         <!-- <p class="card-text">{{topic.content}}</p>-->
           <a href="#" class="btn btn-primary">More..</a>
         </div>
       </div>

@@ -20,22 +20,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService.getRandomQuote({ category: 'dev' })
-      .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe((quote: string) => { this.quote = quote; });
+
      this.banners = [{'banner_header':'header','banner_label':'label goes here','image_url':'assets/imag3.png'}
        ,{'banner_header':'header','banner_label':'label goes here','image_url':'assets/img1.jpg'},
        {'banner_header':'header','banner_label':'label goes here','image_url':'assets/img2.jpg'}]
      this.images = ['assets/promo1.png','assets/promo2.png'];
   }
-  private _randomImageUrls(images: Array<{id: number}>): Array<string> {
-    return [1, 2, 3].map(() => {
-      const randomId = images[Math.floor(Math.random() * images.length)].id;
-      return `https://picsum.photos/900/500?image=${randomId}`;
-    });
-  }
 
-  getUrl(banner)
+
+  getUrl(banner:any)
   {
     return "url('"+banner.image_url+"')";
   }

@@ -7,6 +7,7 @@ import { SharedModule } from '@app/shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
+import { TopicService } from './topic/topic.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TopicComponent } from './topic/topic.component';
 
@@ -24,7 +25,8 @@ import { TopicComponent } from './topic/topic.component';
     TopicComponent
   ],
   providers: [
-    QuoteService
+    QuoteService,
+    TopicService
   ]
 })
 export class HomeModule { }
