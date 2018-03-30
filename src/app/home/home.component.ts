@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
 
-     this.banners = [{'banner_header':'header','banner_label':'label goes here','image_url':'assets/imag3.png'}
-       ,{'banner_header':'header','banner_label':'label goes here','image_url':'assets/img1.jpg'},
-       {'banner_header':'header','banner_label':'label goes here','image_url':'assets/img2.jpg'}]
+     this.banners = [{'banner_header':'header','banner_label':'label goes here','image_url':'assets/pr.jpg'}
+       ,{'banner_header':'header','banner_label':'label goes here','image_url':'assets/pr1.jpg'},
+       {'banner_header':'header','banner_label':'label goes here','image_url':'assets/pr3.jpg'}]
      this.images = ['assets/promo1.png','assets/promo2.png'];
   }
 
