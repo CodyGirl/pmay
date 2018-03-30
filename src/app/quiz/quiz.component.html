@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+
+  </div>
+
+  <div class="card" >
+    <font size="5">
+
+    <div  align=center class="card blue-grey darken-1" *ngIf="quizInProgress">
+
+      <div class="card-content white-text"><span>{{activeQuestion.question}}</span></div><br>
+      <h6 id="abc" class="card-subtitle mb-2 text-muted">Select the answer below</h6><br>
+      <div *ngFor="let option of activeQuestion.options">
+        <div class="card-title">
+        <p class="collection answer" ><input type="radio" name="option">{{option}}.</p>
+          </div>
+      </div>
+      <br>
+      <button type="button" (click)="nextQuestion()" class="btn btn-primary" *ngIf="hasNext()">Next</button>
+      <button type="button" (click)="finish()" *ngIf="isLast()" class="btn btn-success">Finish</button>
+
+    </div>
+  </font>
+    <div class="card-body" *ngIf="!quizInProgress">
+      <p>Thank You</p>
+    </div>
+  </div>
+</div>
