@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
+import { map, catchError } from 'rxjs/operators';
+
+import { HttpClient } from '@angular/common/http';
+
 export interface Credentials {
   // Customize received credentials here
   username: string;
-  token: string;
+  password: string;
 }
 
 export interface LoginContext {
@@ -16,6 +20,10 @@ export interface LoginContext {
 
 const credentialsKey = 'credentials';
 
+const routes = {
+  login:'/ulb/login'
+};
+
 /**
  * Provides a base for authentication workflow.
  * The Credentials interface as well as login/logout methods should be replaced with proper implementation.
@@ -23,9 +31,9 @@ const credentialsKey = 'credentials';
 @Injectable()
 export class AuthenticationService {
 
-  private _credentials: Credentials | null;
+  private _credentials: any | null;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
     if (savedCredentials) {
       this._credentials = JSON.parse(savedCredentials);
@@ -37,14 +45,24 @@ export class AuthenticationService {
    * @param {LoginContext} context The login parameters.
    * @return {Observable<Credentials>} The user credentials.
    */
-  login(context: LoginContext): Observable<Credentials> {
+  login(context: LoginContext): Observable<any> {
     // Replace by proper authentication call
     const data = {
-      username: context.username,
-      token: '123456'
+      email: context.username,
+      password: context.password
     };
-    this.setCredentials(data, context.remember);
-    return of(data);
+    return this.httpClient
+      .post(routes.login,data)
+      .pipe(
+        map((body: any) => {
+          this.setCredentials(body, context.remember);
+          return body})/*,
+        catchError((error) => {
+          console.log('error login',error);
+          return of(error)})*/
+      );
+    //this.setCredentials(data, context.remember);
+    //return of(data);
   }
 
   /**
@@ -69,7 +87,7 @@ export class AuthenticationService {
    * Gets the user credentials.
    * @return {Credentials} The user credentials or null if the user is not authenticated.
    */
-  get credentials(): Credentials | null {
+  get credentials(): any | null {
     return this._credentials;
   }
 
@@ -80,7 +98,7 @@ export class AuthenticationService {
    * @param {Credentials=} credentials The user credentials.
    * @param {boolean=} remember True to remember credentials across sessions.
    */
-  private setCredentials(credentials?: Credentials, remember?: boolean) {
+  private setCredentials(credentials?: any, remember?: boolean) {
     this._credentials = credentials || null;
 
     if (credentials) {

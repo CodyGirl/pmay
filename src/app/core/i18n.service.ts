@@ -79,5 +79,8 @@ export class I18nService {
   get language(): string {
     return this.translateService.currentLang;
   }
+  get languageName(): string {
+    return (this.translateService.currentLang == 'mr-Marathi') ? 'Marathi' : 'English' ;
+  }
 
 }

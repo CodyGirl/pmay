@@ -14,6 +14,7 @@ import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 import { QuizModule } from './quiz/quiz.module';
 import { ContentModule } from './content/content.module';
+import { StartModule } from './start/start.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -33,7 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginModule,
     QuizModule,
     ContentModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StartModule
   ],
   declarations: [AppComponent],
   providers: [

@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   version: '(dev)',
-  serverUrl: 'http://private-e38df5-pmay.apiary-mock.com',
+  serverUrl: 'http://localhost:9999/api/v1',
   defaultLanguage: 'mr-Marathi',
   supportedLanguages: [
     'en-US',
