@@ -42,9 +42,10 @@ export class HeaderComponent implements OnInit {
     return this.i18nService.supportedLanguages;
   }
 
-  get username(): string | null {
+  get username(): any | null {
     const credentials = this.authenticationService.credentials;
-    return credentials ? credentials.username : null;
+    console.log('un',this.authenticationService.credentials);
+    return credentials ? credentials.user.name : null;
   }
 
 }
