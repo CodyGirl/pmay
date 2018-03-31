@@ -6,15 +6,15 @@ import { finalize } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Logger, I18nService, AuthenticationService } from '@app/core';
 
-const log = new Logger('Login');
-
+const log = new Logger('Signup');
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-sign',
+  templateUrl: './sign.component.html',
+  styleUrls: ['./sign.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignComponent implements OnInit {
 
+ 
   version: string = environment.version;
   error: string;
   loginForm: FormGroup;
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   login() {
-    
     this.isLoading = true;
     this.authenticationService.login(this.loginForm.value)
       .pipe(finalize(() => {
@@ -62,6 +61,12 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
+      email:['',Validators.required],
+      phoneno:['',Validators.required],
+      city:['',Validators.required],
+      zip:['',Validators.required],
+      catefory:['',Validators.required],
+      empcode:['',Validators.required],
       remember: true
     });
   }
